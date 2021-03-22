@@ -23,7 +23,12 @@ class SQLiteDatabase:
 
         # Use this instead: where table=<db_table_name> and the number of ?'s corresponds with the number of values being passed 
         query = 'INSERT INTO <table> VALUES <(?,?,...,?)>'
-        self.c.execute(query, (item_dict.values(),))
+        
+        # Unpack values: Perhaps find a better way to do this.
+        var_1 = item_dict['var_1']
+        var_2 = item_dict['var_2']
+
+        self.c.execute(query, (var_1, var_2, ...))
         self.connection.commit()
     
     def update_item_by_x(self, item_id, new_val):
