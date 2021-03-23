@@ -10,11 +10,11 @@ class SQLiteDatabase:
 
     def create_table(self, name):
         #TEMPLATE, MUST REPLACE VALUES
-        create_str = '''CREATE TABLE IF NOT EXISTS <name> (
+        self.c.execute('''CREATE TABLE IF NOT EXISTS <name> (
                      <id> INTEGER PRIMARY KEY,
                      <first_col> TEXT NOT NULL,
                      <second_col> INTEGER NOT NULL
-                     );'''
+                     );''')
 
     def add_item(self, item_dict):
         # SQL Injection vulnerable, but flexible for personal use.
